@@ -7,7 +7,11 @@ which are significantly cheaper.
 
 ## Prerequisites
 For getting the raw json data cURL is used. For json parsing I used Python 3.5.2 along with two libraries
+
+
 json - for loading the actual json file
+
+
 PrettyTable - for being able to print the results with a nice output
 
 ## Usage
@@ -15,38 +19,45 @@ To execute application run
 ```
 ./run.sh
 ```
-with the required parameters which are described in ``run.sh```
+with the required parameters which are described in run.sh
 
 ## Example input output
+This represents from London to Hong Kong in December
 ```
-./run.sh -m 12 -c BER
+./run.sh -m 12 -c HKG -h LON
+```
+
+With the output as below
+```
+Running with the following parameters:
+YEAR=2018
+MONTH=12
+DAY=01
+DESTINATION=HKG
+ORIGIN=LON
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 20220    0 20220    0     0   3639      0 --:--:--  0:00:05 --:--:--  4649
 +------------+---------------------+--------------------+
 |    Date    | outboundLowestFares | inboundLowestFares |
 +------------+---------------------+--------------------+
-| 2018-12-01 |         Null        |       551.0        |
-| 2018-12-02 |        347.0        |       395.0        |
-| 2018-12-03 |        347.0        |       395.0        |
-| 2018-12-04 |        503.0        |       551.0        |
-| 2018-12-05 |        474.0        |       522.0        |
-| 2018-12-06 |        503.0        |       395.0        |
-| 2018-12-07 |        488.0        |       395.0        |
-| 2018-12-08 |         Null        |       551.0        |
-| 2018-12-09 |        347.0        |       395.0        |
-| 2018-12-10 |        347.0        |       551.0        |
-| 2018-12-11 |        503.0        |       551.0        |
-| 2018-12-12 |        474.0        |       522.0        |
-| 2018-12-13 |        347.0        |       395.0        |
-| 2018-12-14 |        347.0        |       395.0        |
-| 2018-12-15 |         Null        |       551.0        |
-| 2018-12-16 |        474.0        |        Null        |
-| 2018-12-17 |        503.0        |       551.0        |
-| 2018-12-18 |         Null        |       551.0        |
-| 2018-12-20 |        503.0        |       522.0        |
-| 2018-12-22 |         Null        |       395.0        |
-| 2018-12-26 |        347.0        |       395.0        |
-| 2018-12-27 |        474.0        |       522.0        |
-| 2018-12-28 |        347.0        |       395.0        |
-| 2018-12-29 |        347.0        |       395.0        |
-| 2018-12-30 |         Null        |       522.0        |
+| 2018-12-01 |      2027.0 DKK     |       Null         |
+| 2018-12-03 |        Null         |     1479.0 DKK     |
+| 2018-12-04 |        Null         |     1479.0 DKK     |
+| 2018-12-05 |      2027.0 DKK     |       Null         |
+| 2018-12-06 |      2027.0 DKK     |       Null         |
+| 2018-12-07 |        Null         |     1479.0 DKK     |
+| 2018-12-09 |        Null         |     1479.0 DKK     |
+| 2018-12-10 |        Null         |     1479.0 DKK     |
+| 2018-12-11 |        Null         |     1479.0 DKK     |
+| 2018-12-16 |        Null         |     1479.0 DKK     |
+| 2018-12-17 |        Null         |     1479.0 DKK     |
+| 2018-12-24 |        Null         |     1479.0 DKK     |
+| 2018-12-27 |        Null         |     1479.0 DKK     |
+| 2018-12-28 |        Null         |     1479.0 DKK     |
+| 2018-12-29 |        Null         |     1479.0 DKK     |
+| 2018-12-30 |        Null         |     1479.0 DKK     |
+| 2018-12-31 |        Null         |     1479.0 DKK     |
 +------------+---------------------+--------------------+
 ```
