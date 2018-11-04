@@ -49,7 +49,7 @@ MONTH=${m}
 DAY=${d}
 YEAR=${y}
 CITY=${c}
-
+file=raw_flights_data_${CITY}_${YEAR}_${MONTH}.json
 
 echo "
 Running with the following parameters:
@@ -59,7 +59,6 @@ DAY=$DAY
 DESTINATION=$CITY
 "
 
-#curl "https://api.flysas.com/offers/flights?displayType=CALENDAR&channel=web&bookingFlow=REVENUE&yth=1&outDate=${YEAR}${MONTH}${DAY}&inDate=${YEAR}${MONTH}${DAY}&from=CPH&to=${CITY}&pos=dk" > raw_flights_data_${CITY}_${YEAR}_${MONTH}.json
+curl "https://api.flysas.com/offers/flights?displayType=CALENDAR&channel=web&bookingFlow=REVENUE&yth=1&outDate=${YEAR}${MONTH}${DAY}&inDate=${YEAR}${MONTH}${DAY}&from=CPH&to=${CITY}&pos=dk" > file
 
-cat raw_flights_data_${CITY}_${YEAR}_${MONTH}.json | ./outbound.sh
-cat raw_flights_data_${CITY}_${YEAR}_${MONTH}.json | ./inbound.sh
+python parser.py $file
