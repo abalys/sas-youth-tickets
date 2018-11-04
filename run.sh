@@ -13,8 +13,10 @@ DAY   #Day of the month of departure [01-31]. This is a required parameter by SA
 "; exit 1; }
 
 
+#Setting the default arguments of DAY and YEAR
 d=01
 y=2018
+#Parsing arguments
 while getopts ":m:d:y:c:" o; do
     case "${o}" in
         m)
@@ -36,10 +38,13 @@ while getopts ":m:d:y:c:" o; do
 done
 shift $((OPTIND-1))
 
+#Checking that the mandatory arguments for MONTH and CITY ar given
 if [ -z "${m}" ] || [ -z "${c}" ]; then
     usage
 fi
 
+#Due to limitation of getops, only single letter variable can be used in the function above. 
+#To make it more clear throught these scripts we change the variable names to the more obvious ones.
 MONTH=${m}
 DAY=${d}
 YEAR=${y}
@@ -53,3 +58,8 @@ MONTH=$MONTH
 DAY=$DAY
 DESTINATION=$CITY
 "
+
+#curl "https://api.flysas.com/offers/flights?displayType=CALENDAR&channel=web&bookingFlow=REVENUE&yth=1&outDate=${YEAR}${MONTH}${DAY}&inDate=${YEAR}${MONTH}${DAY}&from=CPH&to=${CITY}&pos=dk" > raw_flights_data_${CITY}_${YEAR}_${MONTH}.json
+
+cat raw_flights_data_${CITY}_${YEAR}_${MONTH}.json | ./outbound.sh
+cat raw_flights_data_${CITY}_${YEAR}_${MONTH}.json | ./inbound.sh
