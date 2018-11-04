@@ -13,14 +13,15 @@ i='inboundLowestFares'
 o='outboundLowestFares'
 inbound=loaded[i]
 outbound=loaded[o]
-null_dict={'totalPrice': "Null"}
+null_dict={'totalPrice': "Null", 'currency': ''}
 
 dates=set(inbound.keys()).union(set(outbound.keys()))
 sorted_dates=sorted(list(dates))
 
 
 def line(json, key, date):
-    return(json[key].get(date, null_dict).get('totalPrice'))
+    date_object=json[key].get(date, null_dict)
+    return(str(date_object.get('totalPrice')) + " " + str(date_object.get('currency')))
 
 def get_lowest_fares(json):
     return [[k, line(json, o, k), line(json, i, k)] for k in sorted_dates]
