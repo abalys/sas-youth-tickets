@@ -59,6 +59,6 @@ DAY=$DAY
 DESTINATION=$CITY
 "
 
-curl "https://api.flysas.com/offers/flights?displayType=CALENDAR&channel=web&bookingFlow=REVENUE&yth=1&outDate=${YEAR}${MONTH}${DAY}&inDate=${YEAR}${MONTH}${DAY}&from=CPH&to=${CITY}&pos=dk" > file
+curl "https://api.flysas.com/offers/flights?displayType=CALENDAR&channel=web&bookingFlow=REVENUE&yth=1&outDate=${YEAR}${MONTH}${DAY}&inDate=${YEAR}${MONTH}${DAY}&from=CPH&to=${CITY}&pos=dk" > $file
 
 python parser.py $file
